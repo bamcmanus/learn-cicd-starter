@@ -35,5 +35,5 @@ jobs:
 
       - name: Style check
         run: |
-          test -z $(go test ./...)
+          test -z $(go fmt ./...)
 
