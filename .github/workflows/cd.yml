@@ -33,3 +33,9 @@ jobs:
           tag="$(git log --oneline -n1 | awk '{print$1}')"
           echo "Tag: ${tag}"
           gcloud builds submit --tag "us-central1-docker.pkg.dev/notely-461502/notely-ar-repo/notely:${tag}"
+
+      - name: Deploy to Cloud Run
+        run: |
+          tag="$(git log --oneline -n1 | awk '{print$1}')"
+          echo "Tag: ${tag}"
+          gcloud run deploy notely --image "us-central1-docker.pkg.dev/notely-461502/notely-ar-repo/notely:${tag}" --region us-central1 --allow-unauthenticated --project notely-461502 --max-instances=4
