@@ -30,6 +30,6 @@ jobs:
 
       - name: 'Use gcloud CLI'
         run: |
-          tag="$(glo -n1 | awk '{print$1}')"
+          tag="$(git log --oneline -n1 | awk '{print$1}')"
           echo "Tag: ${tag}"
           gcloud builds submit --tag "us-central1-docker.pkg.dev/notely-461502/notely-ar-repo/notely:${tag}"
